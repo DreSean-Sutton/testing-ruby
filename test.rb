@@ -200,3 +200,42 @@ end
 test1 = Testing.new(1, "Dre")
 puts test1.show_details
 puts test1::show_details
+
+    # CONDITIONAL STATEMENTS
+
+x = -5
+if x > 2
+   puts "x is greater than 2"
+elsif x <= 2 && x > 0 and x!=0    # Completely unnecessary
+   puts "x is 1"
+else
+   puts "I can't guess the number"
+end
+
+testing_if_modifier = true
+puts "This is true" if testing_if_modifier
+
+puts "This is true" unless !testing_if_modifier
+
+# case expr0
+# when expr1, expr2
+# stmt1
+# when expr3, expr4
+# stmt2
+# else
+# stmt3
+# end
+
+age =  5
+case age    # little child
+when 0 .. 2
+   puts "baby"
+when 3 .. 6
+   puts "little child"
+when 7 .. 12
+   puts "child"
+when 13 .. 18
+   puts "youth"
+else
+   puts "adult"
+end
