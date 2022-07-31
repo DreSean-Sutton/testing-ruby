@@ -6,7 +6,14 @@ block
 level
 comment
 =end
+# https://www.tutorialspoint.com/ruby.htm
+END {
+  puts "Nodemon is listening correctly"
+}
 
+BEGIN {
+  puts "Nodemon is Initializing Ruby Program"
+}
 puts "Hello, Ruby!"
 
 print <<testing
@@ -25,13 +32,6 @@ test
       I said bar
 bar
 
-END {
-  puts "Nodemon is listening correctly"
-}
-
-BEGIN {
-  puts "Nodemon is Initializing Ruby Program"
-}
 
 # Class Vehicle {
 #   Number no_of_wheels
@@ -139,7 +139,64 @@ n.times do
   new_last_value = arr.shift
   arr.push new_last_value
 end
-puts "#{arr}" # [5, 6, 7, 8, 9, 10, 0, 1, 2, 3, 4]
+puts "#{arr}"     # [5, 6, 7, 8, 9, 10, 0, 1, 2, 3, 4]
 
 total_of_arr = arr.reduce(0) do |ac, cv| ac + cv end
 puts "total_of_arr is: #{total_of_arr}"
+
+h = Hash["a" => 100, "b" => 200]
+puts "Hash at a value: #{h["a"]}"
+puts "Hash at b value: #{h["b"]}"
+h.each do |key, value|
+  puts "Hash at #{key} value: #{value}"
+end
+
+(10..15).each do |n|
+   puts n
+end
+
+(10...15).each do |n|
+   puts n
+end
+
+# OPERATORS
+
+a, b, c = 10, 20, 30
+a, b, = b, c
+puts a, b, c
+
+if(a && b > 30)
+  puts "It's true!"
+else
+  puts "It's false :("
+end
+
+my_boolean = true
+
+puts my_boolean ? "my_boolean is true" : "my_boolean is false" # Requires doing something with return value
+
+puts "variable my_boolean is a #{defined? my_boolean}" # local-variable
+
+MR_COUNT = 0         # constant defined on main Object class
+module Foo
+   MR_COUNT = 0
+   ::MR_COUNT = 1    # set global count to 1
+   MR_COUNT = 2      # set local count to 2
+end
+puts MR_COUNT        # this is the global constant
+puts Foo::MR_COUNT
+
+class Testing
+  def initialize(id, name)
+    @testing_id = id
+    @testing_name = name
+  end
+  def show_details
+    puts "My current id is #@testing_id"
+    puts "My current name is #@testing_name"
+  end
+end
+
+test1 = Testing.new(1, "Dre")
+puts test1.show_details
+puts test1::show_details
