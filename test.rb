@@ -177,14 +177,14 @@ puts my_boolean ? "my_boolean is true" : "my_boolean is false" # Requires doing 
 
 puts "variable my_boolean is a #{defined? my_boolean}" # local-variable
 
-MR_COUNT = 0         # constant defined on main Object class
-module Foo
-   MR_COUNT = 0
-   ::MR_COUNT = 1    # set global count to 1
-   MR_COUNT = 2      # set local count to 2
-end
-puts MR_COUNT        # this is the global constant
-puts Foo::MR_COUNT
+# MR_COUNT = 0         # constant defined on main Object class
+# module Foo
+  #  MR_COUNT = 0
+  #  ::MR_COUNT = 1    # set global count to 1
+  #  MR_COUNT = 2      # set local count to 2
+# end
+# puts MR_COUNT        # this is the global constant
+# puts Foo::MR_COUNT
 
 class Testing
   def initialize(id, name)
@@ -226,6 +226,15 @@ puts "This is true" unless !testing_if_modifier
 # stmt3
 # end
 
+# _tmp = expr0
+# if expr1 === _tmp || expr2 === _tmp
+#    stmt1
+# elsif expr3 === _tmp || expr4 === _tmp
+#    stmt2
+# else
+#    stmt3
+# end
+
 age =  5
 case age    # little child
 when 0 .. 2
@@ -239,3 +248,60 @@ when 13 .. 18
 else
    puts "adult"
 end
+
+def increment_i
+  arr = []
+  i = 0
+  max = 5
+  while i < max
+    arr.push(i)
+    i += 1
+  end
+  return "#{arr}"
+end
+puts increment_i
+
+class Incrementer
+  def initialize(start, last)
+  @start = start
+  @last = last
+  @arr = []
+  end
+  def testing_while_statement   # USES WHILE LOOP
+    while @start <= @last
+      @arr.push(@start)
+      @start += 1
+    end
+    return @arr
+  end
+  def testing_while_modifier    # WILL ALWAYS EXECUTE CODE ONCE UNLESS
+    begin                       # EXPLICITLY STATED (rescue/ensure clause)
+      @arr.push(@start)
+      @start += 1
+    end while @start <= @last
+    return @arr
+  end
+  def testing_until_statement
+    until @start > @last
+      @arr.push(@start)
+      @start += 1
+    end
+    return @arr
+  end
+  def testing_until_modifier    # WILL ALWAYS EXECUTE CODE ONCE UNLESS
+    begin                       # EXPLICITLY STATED (rescue/ensure clause)
+      @arr.push(@start)
+      @start += 1
+    end until @start > @last
+    return @arr
+  end
+end
+while_statement = Incrementer.new(0, 10);
+while_modifier = Incrementer.new(5, 0);
+until_statement = Incrementer.new(0, 10);
+until_modifier = Incrementer.new(5, 0)
+
+puts "while_statement class increment method arr value is #{while_statement::testing_while_statement}"
+puts "while_modifier class increment method arr value is #{while_modifier::testing_while_modifier}"
+puts "until_statement class increment method arr value is #{until_statement::testing_until_statement}"
+puts "until_modifier class increment method arr value is #{until_modifier::testing_until_modifier}"
