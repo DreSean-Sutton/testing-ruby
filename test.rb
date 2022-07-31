@@ -267,6 +267,9 @@ class Incrementer
   @last = last
   @arr = []
   end
+  def Incrementer.count_methods
+    return Incrementer.instance_methods(false).length
+  end
   def testing_while_statement   # USES WHILE LOOP
     while @start <= @last
       @arr.push(@start)
@@ -295,13 +298,45 @@ class Incrementer
     end until @start > @last
     return @arr
   end
+  def testing_for_statement
+    for @start in @last
+      @arr.push(@start)
+    end
+    return @arr
+  end
+  def testing_break_statement
+    for @start in @last
+      @arr.push(@start)
+      if(@start == 5)
+        break
+      end
+    end
+    return @arr
+  end
+  def testing_next_statement
+    for @start in @last
+      if @start < 5 then
+        next
+      end
+      @arr.push(@start)
+    end
+    return @arr
+  end
 end
+
 while_statement = Incrementer.new(0, 10);
 while_modifier = Incrementer.new(5, 0);
 until_statement = Incrementer.new(0, 10);
-until_modifier = Incrementer.new(5, 0)
+until_modifier = Incrementer.new(5, 0);
+for_statement = Incrementer.new(0, 0..10);
+break_statement = Incrementer.new(0, 0..10);
+next_statement = Incrementer.new(0, 0..10);
 
-puts "while_statement class increment method arr value is #{while_statement::testing_while_statement}"
-puts "while_modifier class increment method arr value is #{while_modifier::testing_while_modifier}"
-puts "until_statement class increment method arr value is #{until_statement::testing_until_statement}"
-puts "until_modifier class increment method arr value is #{until_modifier::testing_until_modifier}"
+puts "while_statement method arr value is #{while_statement::testing_while_statement}"
+puts "while_modifier method arr value is #{while_modifier::testing_while_modifier}"
+puts "until_statement method arr value is #{until_statement::testing_until_statement}"
+puts "until_modifier method arr value is #{until_modifier::testing_until_modifier}"
+puts "for_statement method arr value is #{for_statement::testing_for_statement}"
+puts "break_statement method arr value is #{break_statement::testing_break_statement}"
+puts "next_statement method arr value is #{next_statement::testing_next_statement}"
+puts "Amount of methods: #{Incrementer.count_methods}"
