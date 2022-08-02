@@ -355,3 +355,22 @@ favorites::favorite_languages
 favorites::favorite_languages "JavaScript", "Ruby"
 variables = Methods.new()
 variables::variable_parameters "Dogs", "Cats", "Parakeets", "Fish"
+
+def test (i = 10)
+  puts "This will be the start of the test block"
+  yield i
+  puts "This is the end of the test block"
+end
+test {
+  arr = []
+  puts "Let's count!"
+  for i in 0..10
+    arr.push(i)
+  end
+  puts "#{arr}"
+}
+test {
+  |i|
+  puts "let's do something else!"
+  puts "Yield's number is #{i}."
+}
