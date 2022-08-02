@@ -340,3 +340,18 @@ puts "for_statement method arr value is #{for_statement::testing_for_statement}"
 puts "break_statement method arr value is #{break_statement::testing_break_statement}"
 puts "next_statement method arr value is #{next_statement::testing_next_statement}"
 puts "Amount of methods: #{Incrementer.count_methods}"
+
+class Methods
+  def favorite_languages (param1 = "JavaScript", param2 = "postgreSQL")
+    puts "My favorite programming language is #{param1}."
+    puts "My other favorite, is #{param2}."
+  end
+  def variable_parameters (*pet_type)
+    puts "My favorite pets are #{pet_type}."
+  end
+end
+favorites = Methods.new()
+favorites::favorite_languages
+favorites::favorite_languages "JavaScript", "Ruby"
+variables = Methods.new()
+variables::variable_parameters "Dogs", "Cats", "Parakeets", "Fish"
