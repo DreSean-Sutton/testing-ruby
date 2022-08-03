@@ -429,3 +429,22 @@ puts myDate::current_date
 # samp.b1
 # samp.b2
 # samp.s1
+
+# Ranges
+
+puts "#{("a".."i").to_a}"
+
+score = 70
+result = case score
+   when 0..40 then "Fail"
+   when 41..60 then "Pass"
+   when 61..70 then "Pass with Merit"
+   when 71..100 then "Pass with Distinction"
+   else "Invalid Score"
+end
+puts result
+
+a = [1,2,3,4,5]
+b = a.collect {|x| 10*x} # Same as map method?
+puts b
+# clone is the same as .slice method from JavaScript
