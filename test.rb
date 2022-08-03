@@ -7,6 +7,9 @@ level
 comment
 =end
 # https://www.tutorialspoint.com/ruby.htm
+
+$LOAD_PATH << '.'
+
 END {
   puts "Nodemon is listening correctly"
 }
@@ -249,6 +252,8 @@ else
    puts "adult"
 end
 
+# LOOPS
+
 def increment_i
   arr = []
   i = 0
@@ -341,6 +346,8 @@ puts "break_statement method arr value is #{break_statement::testing_break_state
 puts "next_statement method arr value is #{next_statement::testing_next_statement}"
 puts "Amount of methods: #{Incrementer.count_methods}"
 
+# METHODS
+
 class Methods
   def favorite_languages (param1 = "JavaScript", param2 = "postgreSQL")
     puts "My favorite programming language is #{param1}."
@@ -355,6 +362,8 @@ favorites::favorite_languages
 favorites::favorite_languages "JavaScript", "Ruby"
 variables = Methods.new()
 variables::variable_parameters "Dogs", "Cats", "Parakeets", "Fish"
+
+# BLOCK STATEMENTS
 
 def test (i = 10)
   puts "This will be the start of the test block"
@@ -374,3 +383,49 @@ test {
   puts "let's do something else!"
   puts "Yield's number is #{i}."
 }
+
+# MODULES AND MIXINS
+
+require "test-support"
+
+class Date
+  def initialize(month, day, year)
+    @month = month
+    @day = day
+    @year = year
+  end
+  include Week
+  def current_date
+    puts "Current date is #{Week::current_day(@month)} #{@day}, #{@year}"
+  end
+end
+
+myDate = Date.new(4, 20, 1998)
+puts myDate::current_date
+
+# module A       Ruby's mixin facility model.
+#    def a1      Far less convoluted than
+#    end         JavaScript's inheritance model.
+#    def a2
+#    end
+# end
+# module B
+#    def b1
+#    end
+#    def b2
+#    end
+# end
+
+# class Sample
+# include A
+# include B
+#    def s1
+#    end
+# end
+
+# samp = Sample.new
+# samp.a1
+# samp.a2
+# samp.b1
+# samp.b2
+# samp.s1
